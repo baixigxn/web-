@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> 
+    <div class="all">
+        <div class="top">
+            <div class="Img"><img src="images/a15.png" alt=""></div>
+        <div class="top0">
+            <div class="text" id="text">
+                <div id="notice">【温馨提示】最近有不少不法分子在网上骗人，请大家注意！</div>
+            </div>
+        </div>
+        </div>
+        <div class="box" id="box"> 
+            <div class="slider" id="slider">
+                <div class="slide"><img src="images/b5.png" alt=""></div>
+                <div class="slide"><img src="images/b1.png" alt=""></div>
+                <div class="slide"><img src="images/b2.png" alt=""></div>
+                <div class="slide"><img src="images/b3.png" alt=""></div>
+                <div class="slide"><img src="images/b4.png" alt=""></div>
+                <div class="slide"><img src="images/b5.png" alt=""></div>
+                <div class="slide"><img src="images/b1.png" alt=""></div>
+            </div>
+            <span id="left"><</span>
+            <span id="right">></span>
+            <ul class="nav" id="nav">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script src="js/animate.js"></script>
+<script>
+    var text = document.getElementById("text");
+    var notice = document.getElementById("notice");
+    var box = document.getElementById("box");
+    var oNavlist = document.getElementById("nav").children;
+    var slider = document.getElementById("slider");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    //警示轮播,调用改变速度后的animate函数
+    setInterval(function() {
+        animate2(text,{left:-888},function() {
+        text.style.left = "0px";
+    })},800);
+
+    var i = 1;
+    var isMoving = false;
+    //轮播下一张的函数
+    function next() {
+        if(! isMoving) {
+            isMoving = true;
+            i ++;
+            navChange();
+            animate(slider,{left:-1200 * i},function() {
+                if(i > 5) {
+                    slider.style.left = "-1200px";
+                    i = 1;
+                }
+                isMoving = false;
+            });
+        }   
+    }
+    //轮播上一张的函数
+    function pre() {
+        if(isMoving) {
+            return;
+        }
+        isMoving = true;
+        i --;
+        navChange();
+        animate(slider,{left:-1200 * i},function() {
+            if(i == 0) {
+                slider.style.left = -1200 * 5 + "px";
+                i = 5;
+            }
+            isMoving = false;
+        });
+    }
+    var timer = setInterval(next,2000);
+    //鼠标划入清除定时器
+    box.onmouseover = function() {
+        animate(left,{opacity:50});
+        animate(right,{opacity:50});
+        clearInterval(timer);
+    }
+    //鼠标划出开定时器
+    box.onmouseout = function() {
+        animate(left,{opacity:0});
+        animate(right,{opacity:0});
+        timer = setInterval(next,2000);
+    }
+    right.onclick = next;
+    left.onclick = pre;
+    //小按钮点击事件
+    for(var j = 0;j < oNavlist.length;j++) {
+        oNavlist[j].index = j;
+        oNavlist[j].onclick = function() {
+            i = this.index + 1;
+            navChange();
+            animate(slider,{left:-1200 * i});
+        }
+    }
+    //小按钮颜色变化
+    function navChange() {
+        for(var j = 0;j < oNavlist.length;j++) {
+            oNavlist[j].className = "";
+        }
+        if(i == 6) {
+            oNavlist[0].className = "active";
+        }
+        else if(i == 0) {
+            oNavlist[4].className = "active";
+        }
+        else {
+            oNavlist[i - 1].className = "active";
+        }
+    }
+    
+</script>
+</html>

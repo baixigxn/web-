@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.all {
+    width: 1300px;
+    height: auto;
+    border: 1px solid rebeccapurple;
+    margin:100px auto;
+    overflow: hidden;
+}
+.top {
+    width: 2600px;
+    background-color: rgb(235, 236, 108);
+    position: relative;
+    overflow: hidden;
+}
+.top0 {
+    width: 888px;
+    background-color: rgb(235, 236, 108);
+    position: relative;
+    overflow: hidden;
+}
+.text {
+    width: 444px;
+    height: 32px;
+    float: right;
+    left: 0px;
+    position: relative;
+    overflow: hidden;
+}
+#notice {
+    color: red;
+    width: 444px;
+    padding-top: 4px;
+    float:right;
+    position: relative;
+    overflow: hidden;
+}
+.Img {
+    width: auto;
+    padding-left: 200px;
+    padding-top:8px;
+    float: left;
+    position: relative;
+}
+ul,li {
+    list-style: none;
+    text-align:center;
+}
+.box {
+    width: 1200px;
+    height: 400px;
+    margin: 0 auto;
+    padding-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.slider {
+    width: 8400px;
+    position: absolute;
+    left: -1200px;
+}
+.slide {
+    width: 1200px;
+    height: 380px;
+    overflow: hidden;
+    float: left;
+}
+.box > span {
+    display: block;
+    width: 30px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    color:#ccc;
+    top: 175px;
+    line-height: 50px;
+    background: red;
+    font-size: 30px;
+    position: absolute;
+    opacity: 0;
+}
+#left {
+    left: 30px;
+}
+#right {
+    right: 30px;
+}
+.nav {
+    position: absolute;
+    left: 500px;
+    bottom: 20px;
+}
+.nav > li {
+    float: left;
+    width: 20px;
+    height: 20px;
+    background:#CCC;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+.nav .active {
+    background: red;
+}
